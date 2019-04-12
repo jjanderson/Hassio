@@ -48,9 +48,9 @@ views:
       - cards:
           - columns: 2
             entities:
-              - person.anna
-              - person.jj
-              - person.finn
+              - person.person2
+              - person.person4
+              - person.person1
               - device_tracker.daniellas6sanderville
               - device_tracker.golf
               - device_tracker.touareg
@@ -60,9 +60,9 @@ views:
           - aspect_ratio: 50
             default_zoom: 12
             entities:
-              - person.anna
-              - person.jj
-              - device_tracker.finn_watch
+              - person.person2
+              - person.person4
+              - device_tracker.person1_watch
               - device_tracker.daniellas6sanderville
               - device_tracker.golf
               - device_tracker.touareg
@@ -74,14 +74,14 @@ views:
         type: 'custom:vertical-stack-in-card'
       - cards:
           - content: |
-              ## Finn Meds
+              ## person1 Meds
             type: markdown
           - cards:
               - entity:
                   - counter.countmeds
                 title: Today
                 type: 'custom:bignumber-card'
-              - entity: input_boolean.dosefinn
+              - entity: input_boolean.doseperson1
                 tap_action:
                   action: toggle
                 type: entity-button
@@ -134,13 +134,13 @@ views:
               - entity: climate.downstairs
                 name: Lounge
                 type: thermostat
-              - entity: climate.finn_thermostat
-                name: Finn
+              - entity: climate.person1_thermostat
+                name: person1
                 type: thermostat
             type: horizontal-stack
           - cards:
               - entity: climate.guest_thermostat
-                name: Jake
+                name: person3
                 type: thermostat
               - entity: climate.master_bed_thermostat
                 name: Bedroom
@@ -172,7 +172,7 @@ views:
             id: weather
             type: iframe
             url: >-
-              https://embed.windy.com/embed2.html?lat=49.091&lon=-2.072&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=true&detailLat=49.168&detailLon=-2.072&metricWind=default&metricTemp=default&radarRange=-1
+              https://embed.windy.com/embed2.html?REDACTED
           - cards:
               - entity: camera.weather_radar
                 show_name: false
@@ -263,7 +263,7 @@ views:
         id: 7a0fe21111bd440sdfasfgsdfasasdadd340
         type: 'custom:vertical-stack-in-card'
       - entities:
-          - calendar.annajjandersongmailcom
+          - calendar.REDACTED
         numberOfDays: 14
         showProgressBar: false
         type: 'custom:calendar-card'
@@ -330,46 +330,46 @@ views:
       - cards:
           - camera_image: camera.guest
             entities:
-              - binary_sensor.jake_motion_sensor
-            title: Jake
+              - binary_sensor.person3_motion_sensor
+            title: person3
             type: picture-glance
-          - camera_image: camera.jake
+          - camera_image: camera.person3
             entities:
               - light.guest
-              - light.bedside_anna
+              - light.bedside_person2
               - switch.guest_heater
               - >-
                 automation.turn_off_guest_room_lights_10_minutes_after_last_movement
-            title: Jake
+            title: person3
             type: picture-glance
           - entity: climate.guest_thermostat
-            name: Jake
+            name: person3
             type: thermostat
           - entities:
-              - sensor.jake_luminance
-              - sensor.jake_temperature
+              - sensor.person3_luminance
+              - sensor.person3_temperature
               - light.guest
-              - light.bedside_anna
+              - light.bedside_person2
             type: entities
         id: 2ee3c5b2cf564dfgfhghdh2f64c79
         type: vertical-stack
       - cards:
-          - camera_image: camera.finn
+          - camera_image: camera.person1
             entities:
-              - climate.finn_thermostat
-              - switch.finn_heater
-            title: Finn
+              - climate.person1_thermostat
+              - switch.person1_heater
+            title: person1
             type: picture-glance
-          - camera_image: camera.finn_room
+          - camera_image: camera.person1_room
             entities:
-              - light.finn_lava_lamp
-              - light.finn
-              - light.finn_bathroom
+              - light.person1_lava_lamp
+              - light.person1
+              - light.person1_bathroom
               - binary_sensor.motion_sensor_158d0001a8e3e3
-            title: Finn Room
+            title: person1 Room
             type: picture-glance
-          - entity: climate.finn_thermostat
-            name: Finn
+          - entity: climate.person1_thermostat
+            name: person1
             type: thermostat
           - entities:
               - sensor.netatmo_inside_co2
@@ -474,11 +474,11 @@ views:
             name: Bedroom
             type: thermostat
           - entities:
-              - light.bedside_jj
+              - light.bedside_person4
               - light.master_bedroom
               - light.master_bathroom
-              - switch.anna_heater_switch
-              - switch.jj_heater
+              - switch.person2_heater_switch
+              - switch.person4_heater
               - media_player.bedroom_fire_tv_stick
               - media_player.bedroom_echo_dot
               - >-
@@ -497,20 +497,20 @@ views:
           - aspect_ratio: 969
             default_zoom: 12
             entities:
-              - device_tracker.finn_watch
+              - device_tracker.person1_watch
               - device_tracker.mobimeds
               - device_tracker.mobimeds2
             type: map
           - columns: 2
             entities:
-              - device_tracker.finn_watch
-              - sensor.finn_to_home
+              - device_tracker.person1_watch
+              - sensor.person1_to_home
               - counter.countmeds
-              - input_boolean.dosefinn
-              - sensor.finn_s_owlet_heart_rate
-              - sensor.finn_s_owlet_oxygen_level
-              - binary_sensor.finn_s_owlet_base_station
-              - binary_sensor.finn_s_owlet_movement
+              - input_boolean.doseperson1
+              - sensor.person1_s_owlet_heart_rate
+              - sensor.person1_s_owlet_oxygen_level
+              - binary_sensor.person1_s_owlet_base_station
+              - binary_sensor.person1_s_owlet_movement
             type: glance
           - bar_style:
               padding-left: 2px
@@ -549,7 +549,7 @@ views:
           - bar_style:
               padding-left: 2px
               text-align: left
-            entity: sensor.finn_watch_battery
+            entity: sensor.person1_watch_battery
             height: 40px
             max: 100
             min: 0
@@ -560,11 +560,11 @@ views:
                 value: 75
               - hue: '120'
                 value: 100
-            title: Finn Watch
+            title: person1 Watch
             title_position: inside
             type: 'custom:bar-card'
           - entities:
-              - sensor.finn_s_owlet_oxygen_level
+              - sensor.person1_s_owlet_oxygen_level
             labels: true
             line_width: 2
             lower_bound: 80
@@ -573,7 +573,7 @@ views:
             unit: '%'
             upper_bound: 105
           - entities:
-              - sensor.finn_s_owlet_heart_rate
+              - sensor.person1_s_owlet_heart_rate
             labels: true
             line_width: 2
             lower_bound: 30
@@ -581,24 +581,24 @@ views:
             type: 'custom:mini-graph-card'
             unit: bpm
             upper_bound: 200
-        id: Finn
-        title: Finn
+        id: person1
+        title: person1
         type: 'custom:vertical-stack-in-card'
       - cards:
           - aspect_ratio: 969
             default_zoom: 12
             entities:
-              - device_tracker.anna_mobile
-            name: Anna
+              - device_tracker.person2_mobile
+            name: person2
             type: map
           - entities:
-              - device_tracker.anna_mobile
-              - sensor.anna_to_home
+              - device_tracker.person2_mobile
+              - sensor.person2_to_home
             type: glance
           - bar_style:
               padding-left: 2px
               text-align: left
-            entity: sensor.anna_andersons_iphone_battery_level
+            entity: sensor.person2_andersons_iphone_battery_level
             height: 40px
             max: 100
             min: 0
@@ -612,23 +612,23 @@ views:
             title: Phone Battery
             title_position: inside
             type: 'custom:bar-card'
-        title: Anna
+        title: person2
         type: 'custom:vertical-stack-in-card'
       - cards:
           - aspect_ratio: 969
             default_zoom: 12
             entities:
-              - device_tracker.jj_mobile
+              - device_tracker.person4_mobile
             name: Golf
             type: map
           - entities:
-              - device_tracker.jj_mobile
-              - sensor.jj_to_home
+              - device_tracker.person4_mobile
+              - sensor.person4_to_home
             type: glance
           - bar_style:
               padding-left: 2px
               text-align: left
-            entity: sensor.jjiphone_battery_level
+            entity: sensor.person4iphone_battery_level
             height: 40px
             max: 100
             min: 0
@@ -642,7 +642,7 @@ views:
             title: Phone Battery
             title_position: inside
             type: 'custom:bar-card'
-        title: JJ
+        title: person4
         type: 'custom:vertical-stack-in-card'
       - cards:
           - aspect_ratio: 969
@@ -707,8 +707,8 @@ views:
       - entity: light.master_bedroom_group
         name: Master Bedroom
         type: light
-      - entity: light.finn
-        name: Finn's Room
+      - entity: light.person1
+        name: person1's Room
         type: 'custom:light-entity-card'
       - entity: light.dining
         name: Dining
@@ -724,8 +724,8 @@ views:
         type: light
       - entity: light.study
         type: light
-      - entity: light.bedside_anna
-        name: Anna Bedside
+      - entity: light.bedside_person2
+        name: person2 Bedside
         type: light
       - entity: light.parcel
         type: light
@@ -870,9 +870,9 @@ views:
         id: 00a596757d5544af8fe853b20efbf047
         name: Dracaena
         type: plant-status
-      - entity: plant.dracaena_finn
+      - entity: plant.dracaena_person1
         id: 0d26cf1e04764755ac28a547ef030737
-        name: Dracaena Finn
+        name: Dracaena person1
         type: plant-status
       - entity: plant.elastica
         id: eac1dda2030e41ad98793ccca2babc5d
@@ -936,17 +936,17 @@ views:
         type: plant-status
       - background: url("/local/money.jpg")
         cards:
-          - entity: plant.mj
-            name: MJ
+          - entity: plant.rose3
+            name: rose3
             type: plant-status
-          - entity: climate.mj_thermostat
+          - entity: climate.rose3_thermostat
             type: thermostat
           - camera_image: camera.gas_meter
             entities:
-              - switch.mj_heat
-              - script.watermj
+              - switch.rose3_heat
+              - script.waterrose3
               - switch.grow_lamp_switch
-            title: MJ
+            title: rose3
             type: picture-glance
         type: 'custom:vertical-stack-in-card'
     icon: 'mdi:flower'
@@ -976,10 +976,10 @@ views:
             motion_entity: binary_sensor.motion_sensor_158d000223c77e
           - entity: camera.upstairs_hallway
             motion_entity: binary_sensor.upstairs_landing_multisensor_sensor
-          - entity: camera.jake
-          - entity: camera.finn
+          - entity: camera.person3
+          - entity: camera.person1
             motion_entity: binary_sensor.motion_sensor_158d0001a8e3e3
-          - entity: camera.finn_room
+          - entity: camera.person1_room
             motion_entity: binary_sensor.motion_sensor_158d0001a8e3e3
           - entity: camera.study
             motion_entity: binary_sensor.motion_sensor_158d0001aeab7d
@@ -1299,8 +1299,8 @@ views:
         filter:
           exclude:
             - entity_id: sensor.plants_battery_number
-            - entity_id: sensor.finn_s_owlet_heart_rate
-            - entity_id: sensor.finn_s_owlet_oxygen_level
+            - entity_id: sensor.person1_s_owlet_heart_rate
+            - entity_id: sensor.person1_s_owlet_oxygen_level
             - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_alarm_level
             - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_alarm_type
             - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_burglar
@@ -1390,7 +1390,7 @@ views:
           - entity: automation.alarm_vacation_mode_off
           - entity: automation.alarm_vacation_mode_on
           - entity: automation.annouce_parcel_on_kitchen_motion
-          - entity: automation.auto_water_mj
+          - entity: automation.auto_water_rose3
           - entity: automation.cctv_on_alarm_active
           - entity: automation.cctv_on_alarm_off
           - entity: automation.close_garage
@@ -1398,27 +1398,27 @@ views:
           - entity: automation.day_to_night_theme
           - entity: automation.doorbell
           - entity: automation.feed_aglaonema
-          - entity: automation.finn_meds_at_10
-          - entity: automation.finn_meds_at_12
-          - entity: automation.finn_meds_at_12x2
-          - entity: automation.finn_meds_at_12x2_2
-          - entity: automation.finn_meds_at_4
-          - entity: automation.finn_meds_at_6
-          - entity: automation.finn_meds_at_6x2
-          - entity: automation.finn_meds_at_6x2_2
-          - entity: automation.finn_meds_counter
-          - entity: automation.finn_meds_counterx2
-          - entity: automation.finn_meds_warning_12
-          - entity: automation.finn_meds_warning_12x2
-          - entity: automation.finn_meds_warning_16
-          - entity: automation.finn_meds_warning_16x2
-          - entity: automation.finn_meds_warning_22
-          - entity: automation.finn_meds_warning_22x2
-          - entity: automation.finn_meds_warning_6
-          - entity: automation.finn_meds_warning_6x2
-          - entity: automation.finn_thermostat_off_daily
-          - entity: automation.finn_thermostat_on_daily
-          - entity: automation.finn_watch_battery_alert
+          - entity: automation.person1_meds_at_10
+          - entity: automation.person1_meds_at_12
+          - entity: automation.person1_meds_at_12x2
+          - entity: automation.person1_meds_at_12x2_2
+          - entity: automation.person1_meds_at_4
+          - entity: automation.person1_meds_at_6
+          - entity: automation.person1_meds_at_6x2
+          - entity: automation.person1_meds_at_6x2_2
+          - entity: automation.person1_meds_counter
+          - entity: automation.person1_meds_counterx2
+          - entity: automation.person1_meds_warning_12
+          - entity: automation.person1_meds_warning_12x2
+          - entity: automation.person1_meds_warning_16
+          - entity: automation.person1_meds_warning_16x2
+          - entity: automation.person1_meds_warning_22
+          - entity: automation.person1_meds_warning_22x2
+          - entity: automation.person1_meds_warning_6
+          - entity: automation.person1_meds_warning_6x2
+          - entity: automation.person1_thermostat_off_daily
+          - entity: automation.person1_thermostat_on_daily
+          - entity: automation.person1_watch_battery_alert
           - entity: automation.garage_door_closed
           - entity: automation.garage_door_opened
           - entity: automation.good_morning_weather_alert
@@ -1443,24 +1443,24 @@ views:
           - entity: automation.morning_weather_alert_kitchen
           - entity: automation.night_to_day_theme
           - entity: automation.open_garage
-          - entity: automation.open_garage_when_jj_gets_home_from_work
+          - entity: automation.open_garage_when_person4_gets_home_from_work
           - entity: automation.pypies_access_denied
           - entity: automation.pypies_unlocked
-          - entity: automation.reset_finn_meds_checker_12
-          - entity: automation.reset_finn_meds_checker_12x2
-          - entity: automation.reset_finn_meds_checker_16
-          - entity: automation.reset_finn_meds_checker_16x2
-          - entity: automation.reset_finn_meds_checker_22
-          - entity: automation.reset_finn_meds_checker_22x2
-          - entity: automation.reset_finn_meds_checker_6
-          - entity: automation.reset_finn_meds_checker_6x2
-          - entity: automation.reset_finn_meds_counter
+          - entity: automation.reset_person1_meds_checker_12
+          - entity: automation.reset_person1_meds_checker_12x2
+          - entity: automation.reset_person1_meds_checker_16
+          - entity: automation.reset_person1_meds_checker_16x2
+          - entity: automation.reset_person1_meds_checker_22
+          - entity: automation.reset_person1_meds_checker_22x2
+          - entity: automation.reset_person1_meds_checker_6
+          - entity: automation.reset_person1_meds_checker_6x2
+          - entity: automation.reset_person1_meds_counter
           - entity: automation.reset_parcel_counter
           - entity: automation.reset_weather_alert
           - entity: automation.rubbish_collection
           - entity: automation.send_notification_when_alarm_triggered
-          - entity: automation.set_finn_thermostat_to_away_mode
-          - entity: automation.set_finn_thermostat_to_home_mode
+          - entity: automation.set_person1_thermostat_to_away_mode
+          - entity: automation.set_person1_thermostat_to_home_mode
           - entity: automation.set_nest_thermostat_to_away_mode
           - entity: automation.set_nest_thermostat_to_home_mode
           - entity: automation.set_parcel_door_lock_options
@@ -1544,8 +1544,8 @@ views:
           - entity: switch.conservatory_state
           - entity: switch.dining_room_state
           - entity: switch.entrance_hall_state
-          - entity: switch.finn_room_state
-          - entity: switch.finn_state
+          - entity: switch.person1_room_state
+          - entity: switch.person1_state
           - entity: switch.front_garden_state
           - entity: switch.front_side_entrance_state
           - entity: switch.garage_state
@@ -1581,11 +1581,11 @@ views:
         id: 7a0fe21111bd440b987adadasdasdadd340
         type: 'custom:vertical-stack-in-card'
       - entities:
-          - entity: sensor.breaches_anna_jj_anderson_gmail_com
-          - entity: sensor.breaches_jj_workstuff_gmail_com
-          - entity: sensor.breaches_jjand3rson_me_com
-          - entity: sensor.breaches_jjanderson_hotmail_com
-          - entity: sensor.breaches_9pypiesplein_gmail_com
+          - entity: sensor.breaches_REDACTED
+          - entity: sensor.breaches_REDACTED
+          - entity: sensor.breaches_REDACTED
+          - entity: sensor.breaches_REDACTED
+          - entity: sensor.breaches_REDACTED
         show_header_toggle: false
         title: Email Security
         type: entities
