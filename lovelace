@@ -1,0 +1,1892 @@
+background: center / cover no-repeat url("/local/banner17.png") fixed
+excluded_entities:
+  - weblink.router
+resources:
+  - type: js
+    url: /local/my-custom-card.js
+  - type: css
+    url: /local/my-webfont.css
+  - type: js
+    url: /local/custom_ui/alarm_control_panel-card.js?v=0.4
+  - type: module
+    url: /local/custom_ui/surveillance-card.js?v=0
+  - type: js
+    url: 'https://unpkg.com/moment@2.22.2/moment.js'
+  - type: module
+    url: /local/custom_ui/calendar-card/calendar-card.js?v=1.0.1
+  - type: js
+    url: /local/list-card.js?v=0
+  - type: module
+    url: /customcards/github/custom-cards/tracker-card.js?track=true
+  - type: js
+    url: /local/vertical-stack-in-card.js?v=0.0.9
+  - type: js
+    url: /customcards/github/thomasloven/card-tools.js?track=true
+  - type: js
+    url: /local/light-entity-card.js?track=true
+  - type: module
+    url: /local/mini-graph-card-bundle.js?v=0.3.0
+  - type: js
+    url: /local/monster-card.js?v=1
+  - type: module
+    url: >-
+      https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/swipe-card/swipe-card.min.js
+  - type: module
+    url: >-
+      https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
+  - type: js
+    url: /local/bignumber-card.js
+  - type: js
+    url: /local/bar-card-master/bar-card.js
+  - type: module
+    url: /local/camera-card.js
+  - type: js
+    url: /local/xiaomi-vacuum-card.js?v=1.1.0
+title: La Selliere
+views:
+  - cards:
+      - cards:
+          - columns: 2
+            entities:
+              - person.anna
+              - person.jj
+              - person.finn
+              - device_tracker.daniellas6sanderville
+              - device_tracker.golf
+              - device_tracker.touareg
+            show_name: false
+            title: Where is...
+            type: glance
+          - aspect_ratio: 50
+            default_zoom: 12
+            entities:
+              - person.anna
+              - person.jj
+              - device_tracker.finn_watch
+              - device_tracker.daniellas6sanderville
+              - device_tracker.golf
+              - device_tracker.touareg
+              - device_tracker.mobimeds
+              - device_tracker.mobimeds2
+              - device_tracker.mobimeds3
+            type: map
+        id: 7a0fe21111bndfvjndjfnvjdnfvjdnfvjdnfvjndfvjndfjvndjfvndasasdadd340
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - content: |
+              ## Finn Meds
+            type: markdown
+          - cards:
+              - entity:
+                  - counter.countmeds
+                title: Today
+                type: 'custom:bignumber-card'
+              - entity: input_boolean.dosefinn
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entities:
+                  - input_boolean.doubledose
+                type: glance
+            id: rasomethingspecial
+            type: horizontal-stack
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.mobimeds_battery
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: MobiMeds 1
+            title_position: inside
+            type: 'custom:bar-card'
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.mobimeds3_battery
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: MobiMeds 3
+            title_position: inside
+            type: 'custom:bar-card'
+        id: sdsdfsdfsferhr6gfy4fsydef4v
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - content: |
+              ## Thermostats
+            type: markdown
+          - cards:
+              - entity: climate.downstairs
+                name: Lounge
+                type: thermostat
+              - entity: climate.finn_thermostat
+                name: Finn
+                type: thermostat
+            type: horizontal-stack
+          - cards:
+              - entity: climate.guest_thermostat
+                name: Jake
+                type: thermostat
+              - entity: climate.master_bed_thermostat
+                name: Bedroom
+                type: thermostat
+            type: horizontal-stack
+        id: thermostats
+        type: 'custom:vertical-stack-in-card'
+      - entity: cover.garage_door
+        tap_action:
+          action: toggle
+        type: entity-button
+      - card:
+          entity: script.goodnight
+          icon: 'mdi:sleep'
+          name: Goodnight
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.goodnight
+          type: entity-button
+        conditions:
+          - entity: sun.sun
+            state: below_horizon
+        id: 730577fd33254546b91d39a98d5e48e1
+        type: conditional
+      - cards:
+          - aspect_ratio: 100%
+            id: weather
+            type: iframe
+            url: >-
+              https://embed.windy.com/embed2.html?lat=49.091&lon=-2.072&zoom=7&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=true&detailLat=49.168&detailLon=-2.072&metricWind=default&metricTemp=default&radarRange=-1
+          - cards:
+              - entity: camera.weather_radar
+                show_name: false
+                show_state: false
+                type: picture-entity
+              - entity: camera.weather_satellite
+                show_name: false
+                show_state: false
+                type: picture-entity
+            id: radar_images
+            type: horizontal-stack
+          - entities:
+              - sensor.sunset
+              - sensor.sunrise
+              - sensor.daylight_time_today
+            id: sun_state
+            type: glance
+        id: 144e004b764747b9bfb5de9929101f60
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - entity: sensor.power_usage
+            max: 7
+            name: Electricity
+            severity:
+              green: 0
+              red: 3
+              yellow: 2
+            title: Electricity
+            type: gauge
+            unit_of_measurement: kW
+          - entity: sensor.speedtest_download
+            max: 250
+            name: Internet
+            severity:
+              green: 200
+              red: 0
+              yellow: 100
+            type: gauge
+        id: electricity
+        type: horizontal-stack
+      - entity: alarm_control_panel.ha_alarm
+        id: 35a9d07636624cecbc68cbc20f1b4cbb
+        labels:
+          state.alarm_control_panel.arm_away: Away!!
+          ui.card.alarm_control_panel.code: Please enter the 4 digit code
+        scale: 15px
+        show_keypad: true
+        states:
+          - arm_home
+          - arm_away
+        style: '--alarm-color-disarmed: var(--label-badge-blue);'
+        title: Alarm
+        type: 'custom:alarm_control_panel-card'
+      - card:
+          show_header_toggle: false
+          title: Lights that are ON
+          type: Entities
+        filter:
+          exclude:
+            - entity_id: '*group*'
+          include:
+            - domain: light
+              state: 'on'
+            - entity_id: '*switch.light*'
+              state: 'on'
+        type: 'custom:monster-card'
+      - card:
+          camera_image: camera.parcel_door
+          entities:
+            - counter.parcels
+            - light.parcel
+          type: picture-glance
+        conditions:
+          - entity: counter.parcels
+            state_not: '0'
+        id: e049bd5d507f41039a60e74a897816fd
+        type: conditional
+      - cards:
+          - entity: camera.front_door
+            show_state: false
+            type: picture-entity
+          - columns: 3
+            entities:
+              - sensor.ring_front_door_last_ding
+              - sensor.ring_front_door_last_activity
+              - light.front_door
+            type: glance
+        id: 7a0fe21111bd440sdfasfgsdfasasdadd340
+        type: 'custom:vertical-stack-in-card'
+      - entities:
+          - calendar.annajjandersongmailcom
+        numberOfDays: 14
+        showProgressBar: false
+        type: 'custom:calendar-card'
+      - title: Shopping List
+        type: shopping-list
+      - entity: camera.beach
+        type: picture-entity
+      - columns:
+          - add_link: link
+            field: title
+            title: Headlines
+        entity: sensor.bbc_news
+        row_limit: 10
+        title: BBC News
+        type: 'custom:list-card'
+      - entity: camera.front_door
+        name: Front Door
+        type: 'custom:camera-card'
+    id: dashboard
+    theme: dark-mode
+    title: Dashboard
+  - cards:
+      - cards:
+          - camera_image: camera.lounge
+            entities:
+              - light.lounge_group
+            title: Lounge
+            type: picture-glance
+          - entity: climate.downstairs
+            name: Lounge
+            type: thermostat
+          - entities:
+              - media_player.lounge_onkyo
+              - media_player.lounge_tv
+              - media_player.lounge_echo_dot
+              - script.movies
+              - script.dinner
+              - binary_sensor.door_window_sensor_158d00019da821
+              - binary_sensor.motion_sensor_158d000223c77e
+            type: entities
+        entities: null
+        id: 2ee3c5b2cf564sdfddsfsdfsdfsdfsdfsdfsdfsdfgfhghdh2f64c79
+        type: vertical-stack
+      - cards:
+          - camera_image: camera.kitchen
+            entities:
+              - light.kitchen_lights_level
+              - binary_sensor.kitchen_multisensor_sensor
+              - media_player.kitchen_echo_dot
+              - binary_sensor.door_window_sensor_158d00019da6da
+            title: Kitchen
+            type: picture-glance
+          - camera_image: camera.conservatory
+            entities:
+              - binary_sensor.door_window_sensor_158d0001ab5b21
+            title: Conservatory
+            type: picture-glance
+          - entities:
+              - sensor.who_cooks
+              - sensor.kitchen_multisensor_temperature
+            type: entities
+        id: d9f73dd2fb624efca8c64f6766a68a2e
+        type: vertical-stack
+      - cards:
+          - camera_image: camera.guest
+            entities:
+              - binary_sensor.jake_motion_sensor
+            title: Jake
+            type: picture-glance
+          - camera_image: camera.jake
+            entities:
+              - light.guest
+              - light.bedside_anna
+              - switch.guest_heater
+              - >-
+                automation.turn_off_guest_room_lights_10_minutes_after_last_movement
+            title: Jake
+            type: picture-glance
+          - entity: climate.guest_thermostat
+            name: Jake
+            type: thermostat
+          - entities:
+              - sensor.jake_luminance
+              - sensor.jake_temperature
+              - light.guest
+              - light.bedside_anna
+            type: entities
+        id: 2ee3c5b2cf564dfgfhghdh2f64c79
+        type: vertical-stack
+      - cards:
+          - camera_image: camera.finn
+            entities:
+              - climate.finn_thermostat
+              - switch.finn_heater
+            title: Finn
+            type: picture-glance
+          - camera_image: camera.finn_room
+            entities:
+              - light.finn_lava_lamp
+              - light.finn
+              - light.finn_bathroom
+              - binary_sensor.motion_sensor_158d0001a8e3e3
+            title: Finn Room
+            type: picture-glance
+          - entity: climate.finn_thermostat
+            name: Finn
+            type: thermostat
+          - entities:
+              - sensor.netatmo_inside_co2
+              - sensor.netatmo_inside_humidity
+              - sensor.netatmo_inside_noise
+              - sensor.netatmo_inside_pressure
+              - sensor.netatmo_inside_temperature
+            type: entities
+        id: 2ee3c5b2cf5644a4bb50d981d2f64c79
+        type: vertical-stack
+      - camera_image: camera.dining_room
+        entities:
+          - light.dining
+          - binary_sensor.motion_sensor_158d0001dc22a0
+          - binary_sensor.door_window_sensor_158d00019da881
+          - >-
+            automation.turn_off_dining_room_lights_10_minutes_after_last_movement
+        id: 8db696c284bb4df6870a79ecff1a8375
+        title: Dining Room
+        type: picture-glance
+      - cards:
+          - camera_image: camera.study
+            entities:
+              - light.study_2
+              - light.study_lamp
+            title: Study
+            type: picture-glance
+          - entities:
+              - media_player.study_echo_dot
+              - sensor.study2_temperature_measurement
+              - binary_sensor.motion_sensor_158d0001aeab7d
+              - automation.turn_off_study_light_10_minutes_after_last_movement
+              - >-
+                automation.turn_on_study_light_when_there_is_movement_after_sunset
+            type: entities
+        type: vertical-stack
+      - cards:
+          - camera_image: camera.entrance_hall
+            entities:
+              - group.downtairs_hallway_lights
+            type: picture-glance
+          - camera_image: camera.upstairs_hallway
+            entities:
+              - light.upstairs_hallway
+              - climate.upstairs_hallway_thermostat
+              - media_player.upstairs_landing_echo_dot
+            type: picture-glance
+        id: 428c7361b2534b81bedb0acee80c3937
+        type: horizontal-stack
+      - cards:
+          - camera_image: camera.front_garden
+            entities:
+              - light.gory_flood
+            title: Front Garden
+            type: picture-glance
+          - camera_image: camera.side_garden
+            entities:
+              - light.side_flood
+            title: Side Garden
+            type: picture-glance
+          - entity: camera.side_gate
+            title: Side Gate
+            type: picture-entity
+          - camera_image: camera.front_door
+            entities:
+              - light.front_door
+            title: Front Door
+            type: picture-glance
+          - camera_image: camera.swings
+            entities:
+              - light.la_mare_flood
+            title: Swings
+            type: picture-glance
+          - camera_image: camera.parcel_door
+            entities:
+              - light.parcel
+            title: Parcel Door
+            type: picture-glance
+          - entities:
+              - counter.parcels
+              - lock.assa_abloy_keyless_connected_yd_01_con_locked
+            type: entities
+        id: de7df46e7d4b4e0f8be9707fa3f1a862
+        type: vertical-stack
+      - cards:
+          - camera_image: camera.garage
+            entities:
+              - light.garage
+            title: Garage
+            type: picture-glance
+          - entities:
+              - binary_sensor.garage_multisensor_sensor
+              - sensor.garage_multisensor_temperature
+              - cover.garage_door
+              - binary_sensor.door_window_sensor_158d00019df463
+              - binary_sensor.door_window_sensor_158d00019da703
+            type: entities
+        id: de7df46e7d4b4e0f8be9707fa3f1a862
+        type: vertical-stack
+      - cards:
+          - entity: climate.master_bed_thermostat
+            name: Bedroom
+            type: thermostat
+          - entities:
+              - light.bedside_jj
+              - light.master_bedroom
+              - light.master_bathroom
+              - switch.anna_heater_switch
+              - switch.jj_heater
+              - media_player.bedroom_fire_tv_stick
+              - media_player.bedroom_echo_dot
+              - >-
+                automation.turn_on_master_lights_when_there_is_movement_after_sunset
+              - automation.turn_off_master_lights_5_minutes_after_last_movement
+            type: entities
+        id: d9f73dd2fb624efca8c64f6766a68a2e
+        type: vertical-stack
+      - entity: camera.beach
+        type: picture-entity
+    icon: 'mdi:home-variant'
+    id: Rooms
+    title: Rooms
+  - cards:
+      - cards:
+          - aspect_ratio: 969
+            default_zoom: 12
+            entities:
+              - device_tracker.finn_watch
+              - device_tracker.mobimeds
+              - device_tracker.mobimeds2
+            type: map
+          - columns: 2
+            entities:
+              - device_tracker.finn_watch
+              - sensor.finn_to_home
+              - counter.countmeds
+              - input_boolean.dosefinn
+              - sensor.finn_s_owlet_heart_rate
+              - sensor.finn_s_owlet_oxygen_level
+              - binary_sensor.finn_s_owlet_base_station
+              - binary_sensor.finn_s_owlet_movement
+            type: glance
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.mobimeds_battery
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: MobiMeds 1
+            title_position: inside
+            type: 'custom:bar-card'
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.mobimeds3_battery
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: MobiMeds 3
+            title_position: inside
+            type: 'custom:bar-card'
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.finn_watch_battery
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: Finn Watch
+            title_position: inside
+            type: 'custom:bar-card'
+          - entities:
+              - sensor.finn_s_owlet_oxygen_level
+            labels: true
+            line_width: 2
+            lower_bound: 80
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+            unit: '%'
+            upper_bound: 105
+          - entities:
+              - sensor.finn_s_owlet_heart_rate
+            labels: true
+            line_width: 2
+            lower_bound: 30
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+            unit: bpm
+            upper_bound: 200
+        id: Finn
+        title: Finn
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - aspect_ratio: 969
+            default_zoom: 12
+            entities:
+              - device_tracker.anna_mobile
+            name: Anna
+            type: map
+          - entities:
+              - device_tracker.anna_mobile
+              - sensor.anna_to_home
+            type: glance
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.anna_andersons_iphone_battery_level
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: Phone Battery
+            title_position: inside
+            type: 'custom:bar-card'
+        title: Anna
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - aspect_ratio: 969
+            default_zoom: 12
+            entities:
+              - device_tracker.jj_mobile
+            name: Golf
+            type: map
+          - entities:
+              - device_tracker.jj_mobile
+              - sensor.jj_to_home
+            type: glance
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.jjiphone_battery_level
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '0'
+                value: 50
+              - hue: '40'
+                value: 75
+              - hue: '120'
+                value: 100
+            title: Phone Battery
+            title_position: inside
+            type: 'custom:bar-card'
+        title: JJ
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - aspect_ratio: 969
+            default_zoom: 12
+            entities:
+              - device_tracker.golf
+            name: Golf
+            type: map
+          - columns: 3
+            entities:
+              - device_tracker.golf
+              - sensor.golf_speed
+              - sensor.golf_odometer
+              - sensor.golf_status
+              - sensor.golf_updated
+              - sensor.golf_to_home
+            type: glance
+          - entities:
+              - sensor.golf_address
+            type: entities
+        id: Golf
+        title: Golf
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - aspect_ratio: 969
+            default_zoom: 12
+            entities:
+              - device_tracker.touareg
+            name: Golf
+            type: map
+          - columns: 3
+            entities:
+              - device_tracker.touareg
+              - sensor.touareg_speed
+              - sensor.touareg_odometer
+              - sensor.touareg_status
+              - sensor.touareg_updated
+              - sensor.touareg_to_home
+            type: glance
+          - entities:
+              - sensor.touareg_address
+            type: entities
+        id: Touareg
+        show_state: false
+        title: Touareg
+        type: 'custom:vertical-stack-in-card'
+    icon: 'mdi:account-multiple'
+    id: People
+    title: People
+  - background: center / cover no-repeat url("/local/lights.jpg") fixed
+    badges: []
+    cards:
+      - entity: light.upstairs_hallway
+        name: Upstairs Hallway
+        type: 'custom:light-entity-card'
+      - entity: light.lounge
+        name: Lounge
+        type: 'custom:light-entity-card'
+      - entity: light.entrance_hall_group
+        name: Entrance Hall
+        type: light
+      - entity: light.master_bedroom_group
+        name: Master Bedroom
+        type: light
+      - entity: light.finn
+        name: Finn's Room
+        type: 'custom:light-entity-card'
+      - entity: light.dining
+        name: Dining
+        type: 'custom:light-entity-card'
+      - entity: light.garage
+        type: light
+      - entity: light.front_door
+        type: light
+      - entity: light.kitchen_lights_level
+        type: light
+      - entity: light.guest_room_group
+        name: Guest Room
+        type: light
+      - entity: light.study
+        type: light
+      - entity: light.bedside_anna
+        name: Anna Bedside
+        type: light
+      - entity: light.parcel
+        type: light
+    icon: 'mdi:lightbulb'
+    path: Lights
+    title: Lights
+  - background: center / cover no-repeat url("/local/sunnyskies.jpg") fixed
+    cards:
+      - entity: weather.dark_sky
+        type: 'custom:weather-card'
+      - cards:
+          - columns: 2
+            entities:
+              - sensor.tide_my_favourite_beach_next_high
+              - sensor.tide_my_favourite_beach_next_low
+              - sensor.current_msw_max
+              - sensor.msw_forecast
+            format: time
+            type: glance
+          - entity: camera.sea_temperature
+            show_name: false
+            show_state: false
+            type: picture-entity
+        id: 7a0fe21111bd440b987005a0d35dd340
+        type: 'custom:vertical-stack-in-card'
+      - aspect_ratio: 100%
+        id: 7f5f77a7d8594c299c6caa5efcfbd7ae
+        type: iframe
+        url: >-
+          https://embed.windy.com/embed2.html?lat=49.393&lon=-2.153&zoom=8&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=49.168&detailLon=-2.072&metricWind=default&metricTemp=default&radarRange=-1
+      - cards:
+          - cards:
+              - entity: camera.weather_radar
+                show_name: false
+                show_state: false
+                type: picture-entity
+              - entity: camera.weather_satellite
+                show_name: false
+                show_state: false
+                type: picture-entity
+            id: radar_images
+            type: horizontal-stack
+          - entities:
+              - sensor.sunset
+              - sensor.sunrise
+              - sensor.daylight_time_today
+            id: sun_state
+            type: glance
+          - entities:
+              - sensor.current_uv_index
+              - sensor.current_uv_level
+              - sensor.max_uv_index
+            id: uv_state
+            type: glance
+        id: 144e004b764747b9bfb5de9929101f60
+        type: 'custom:vertical-stack-in-card'
+    icon: 'mdi:white-balance-sunny'
+    id: Weatherboard
+    title: Weather
+  - cards:
+      - entities:
+          - entity: sensor.indego_state
+        show_header_toggle: false
+        title: Larry
+        type: entities
+      - background: img/vacuum.png
+        buttons: true
+        entity: vacuum.xiaomi_vacuum_cleaner
+        name: Veronica
+        type: 'custom:xiaomi-vacuum-card'
+    icon: 'mdi:robot-vacuum'
+    id: vacuum
+    title: Veronica
+  - background: center / cover no-repeat url("/local/music.jpg") fixed
+    cards:
+      - entity: sensor.plex
+        icon: 'mdi:plex'
+        name: Plex Connections
+        type: sensor
+      - entity: media_player.lounge_tv
+        id: 9900cbb2a51a4983a0d76b87a41aedbc
+        type: media-control
+      - entity: media_player.lounge_echo_dot
+        id: 08ca0cc83fe341c89eab37f54dac0221
+        type: media-control
+      - entity: media_player.bedroom_fire_tv_stick
+        id: 69f644c38eb142b69c6a28188cc15633
+        type: media-control
+      - entity: media_player.lounge_onkyo
+        id: 06b9243a85514666b96a3b116e114f3e
+        type: media-control
+      - entity: media_player.lounge_onkyo_zone_2
+        id: 4232f71e99884bc69d3a10d13020f621
+        type: media-control
+      - entity: media_player.bedroom_echo_dot
+        id: bd652eb4c5774cccbb3d6gj6733f5886
+        type: media-control
+      - entity: media_player.kitchen_echo_dot
+        id: bd652eb4c5774cccbb3dh57dj7f3f5886
+        type: media-control
+      - entity: media_player.study_echo_dot
+        type: media-control
+      - entity: media_player.upstairs_landing_echo_dot
+        type: media-control
+      - entity: media_player.guest_room_echo_dot
+        type: media-control
+    icon: 'mdi:music'
+    id: Media
+    title: Media
+  - background: center / cover no-repeat url("/local/plants.jpg") fixed
+    badges: []
+    cards:
+      - entities:
+          - entity: sensor.plants_battery_friendly
+          - entity: sensor.water_plants_friendly
+          - entity: sensor.fertilize_plants_friendly
+        panel: true
+        show_header_toggle: false
+        title: Plants Summary
+        type: entities
+      - entity: plant.aglaonema
+        id: 7946157bd04c46e8a6e3089094691627
+        name: Aglaonema
+        type: plant-status
+      - entity: plant.cycas_dining
+        id: b86d587f5e6142ea9aeb6e969ca1eec5
+        name: Cycas Dining
+        type: plant-status
+      - entity: plant.cycas_entrance
+        id: 272713e668dc43f98a826032c21a4bfb
+        name: Cycas Entrance
+        type: plant-status
+      - entity: plant.cycas_lounge
+        id: 003fa97c774c4fc7b22d150ffd8377e1
+        name: Cycas Lounge
+        type: plant-status
+      - entity: plant.cycas_stairs
+        id: 0cae563f76c44d73b4ba8a15a4dc4322
+        name: Cycas Stairs
+        type: plant-status
+      - entity: plant.dracaena
+        id: 00a596757d5544af8fe853b20efbf047
+        name: Dracaena
+        type: plant-status
+      - entity: plant.dracaena_finn
+        id: 0d26cf1e04764755ac28a547ef030737
+        name: Dracaena Finn
+        type: plant-status
+      - entity: plant.elastica
+        id: eac1dda2030e41ad98793ccca2babc5d
+        name: Elastica
+        type: plant-status
+      - entity: plant.ficus_big
+        id: 8d4ced21a97f4a88b16bef07fc2f46bc
+        name: Ficus Big
+        type: plant-status
+      - entity: plant.ficus_conservatory_left
+        id: 7cf675d1b9634c6ba081307558964e97
+        name: Ficus Conservatory (L)
+        type: plant-status
+      - entity: plant.ficus_conservatory_right
+        id: 55b56b21ae064411a4c33d5cfdffda33
+        name: Ficus Conservatory (R)
+        type: plant-status
+      - entity: plant.ficus_front_door
+        id: 593c2afee30740ffbe85507b6c8ea8e6
+        name: Ficus Front Door
+        type: plant-status
+      - entity: plant.ficus_lounge
+        id: 876beedd3ba04921a92b133eea08195e
+        name: Ficus Lounge
+        type: plant-status
+      - entity: plant.ficus_conservatory_downstairs
+        id: 7870fcaa4b5547e3bf19e4ddccc6c85d
+        name: Ficus Conservatory (D)
+        type: plant-status
+      - entity: plant.howea_lounge
+        id: 271b98b3015247de8b5dc84100e047e7
+        name: Palm
+        type: plant-status
+      - entity: plant.sansevieria_study
+        id: 78cac1198a594b7cb063d593d9c37073
+        name: Sansevieria
+        type: plant-status
+      - entity: plant.lemon
+        id: ee7dba194991481984108c33d7cb946f
+        name: Lemon
+        type: plant-status
+      - entity: plant.scheff_dining
+        id: 0d146da84ffa42c88487e2564498903d
+        name: Scheff
+        type: plant-status
+      - entity: plant.peace_lily
+        id: bb7a347d9c514dbcb2d8ac2c9401f44c
+        name: Peace Lily
+        type: plant-status
+      - entity: plant.lilly_stairs
+        id: d6d52a59f11f42719e136cd491d9083a
+        name: Lily Stairs
+        type: plant-status
+      - entity: plant.rose
+        id: 81625c9964c64bdbb51da460df61e0e0
+        name: Avocado
+        type: plant-status
+      - entity: plant.new_ficus
+        id: 4a2f1e6349f14a08a40781641d9dcb9a
+        name: New Ficus
+        type: plant-status
+      - background: url("/local/money.jpg")
+        cards:
+          - entity: plant.mj
+            name: MJ
+            type: plant-status
+          - entity: climate.mj_thermostat
+            type: thermostat
+          - camera_image: camera.gas_meter
+            entities:
+              - switch.mj_heat
+              - script.watermj
+              - switch.grow_lamp_switch
+            title: MJ
+            type: picture-glance
+        type: 'custom:vertical-stack-in-card'
+    icon: 'mdi:flower'
+    id: Plants
+    path: plants
+    title: Plants
+  - cards:
+      - cameras:
+          - entity: camera.beach
+          - entity: camera.front_door
+            motion_entity: binary_sensor.ring_front_door_motion
+          - entity: camera.side_gate
+          - entity: camera.side_garden
+          - entity: camera.front_garden
+          - entity: camera.swings
+          - entity: camera.front_side_entrance
+          - entity: camera.parcel_door
+          - entity: camera.garage
+            motion_entity: binary_sensor.garage_multisensor_sensor
+          - entity: camera.conservatory
+            motion_entity: binary_sensor.kitchen_multisensor_sensor
+          - entity: camera.entrance_hall
+            motion_entity: binary_sensor.motion_sensor_158d0001a8e525
+          - entity: camera.kitchen
+            motion_entity: binary_sensor.kitchen_multisensor_sensor
+          - entity: camera.lounge
+            motion_entity: binary_sensor.motion_sensor_158d000223c77e
+          - entity: camera.upstairs_hallway
+            motion_entity: binary_sensor.upstairs_landing_multisensor_sensor
+          - entity: camera.jake
+          - entity: camera.finn
+            motion_entity: binary_sensor.motion_sensor_158d0001a8e3e3
+          - entity: camera.finn_room
+            motion_entity: binary_sensor.motion_sensor_158d0001a8e3e3
+          - entity: camera.study
+            motion_entity: binary_sensor.motion_sensor_158d0001aeab7d
+          - entity: camera.front_gate
+            motion_entity: binary_sensor.ring_front_gate_motion
+          - entity: camera.gas_meter
+          - entity: camera.airport
+          - entity: camera.st_brelades_1
+          - entity: camera.st_brelades_2
+          - entity: camera.st_brelades_3
+          - entity: camera.st_brelades_4
+          - entity: camera.waterfront_east
+          - entity: camera.waterfront_west
+        id: e5766b4b28794bab8e553225bf16d416
+        thumb_interval: 15
+        type: 'custom:surveillance-card'
+        update_interval: 2
+    icon: 'mdi:cctv'
+    id: Cameras
+    panel: true
+    title: Surveillance
+  - background: center / cover no-repeat url("/local/utilities.jpg") fixed
+    badges: []
+    cards:
+      - cards:
+          - content: |
+              ## Electricity
+            type: markdown
+          - cards:
+              - entity: sensor.total_electricity_used
+                icon: 'mdi:currency-gbp'
+                name: This month
+                type: sensor
+              - entity: sensor.power_usage
+                max: 7
+                name: Current
+                severity:
+                  green: 0
+                  red: 3
+                  yellow: 2
+                title: Electricity
+                type: gauge
+                unit_of_measurement: kW
+            type: horizontal-stack
+          - cards:
+              - entity: sensor.daily_energy_offpeak
+                name: Off-Peak Today
+                type: sensor
+              - entity: sensor.daily_energy_peak
+                name: Peak Today
+                type: sensor
+            type: horizontal-stack
+          - cards:
+              - entity: sensor.monthly_energy_offpeak
+                name: Off-Peak This month
+                type: sensor
+              - entity: sensor.monthly_energy_peak
+                name: Peak This month
+                type: sensor
+            type: horizontal-stack
+          - entities:
+              - sensor.power_usage
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - entities:
+              - sensor.total_electricity_used
+              - sensor.total_gas_used
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+        id: thermostats
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - content: |
+              ## Gas
+            type: markdown
+          - cards:
+              - entity: sensor.gas_usage
+                max: 7
+                name: Gas
+                severity:
+                  green: 0
+                  red: 3
+                  yellow: 2
+                title: Gas
+                type: gauge
+                unit_of_measurement: kW
+            type: horizontal-stack
+          - cards:
+              - entity: sensor.daily_gas_offpeak
+                name: Off-Peak Today
+                type: sensor
+              - entity: sensor.daily_gas_peak
+                name: Peak Today
+                type: sensor
+            type: horizontal-stack
+          - cards:
+              - entity: sensor.monthly_gas_offpeak
+                name: Off-Peak This month
+                type: sensor
+              - entity: sensor.monthly_gas_peak
+                name: Peak This month
+                type: sensor
+            type: horizontal-stack
+        id: thermostats
+        type: 'custom:vertical-stack-in-card'
+      - columns:
+          - field: title
+            title: Diesel Price
+        entity: sensor.diesel_price
+        type: 'custom:list-card'
+      - columns:
+          - field: title
+            title: Unleaded Price
+        entity: sensor.petrol_price
+        type: 'custom:list-card'
+      - columns:
+          - field: title
+            title: Oil Price/L (900L)
+        entity: sensor.oil_price_900l
+        type: 'custom:list-card'
+      - columns:
+          - field: title
+            title: Oil Price/L (700L)
+        entity: sensor.oil_price_700l
+        type: 'custom:list-card'
+      - columns:
+          - field: title
+            title: Oil Price/L (500L)
+        entity: sensor.oil_price_500l
+        type: 'custom:list-card'
+    icon: 'mdi:city'
+    panel: false
+    path: utilities
+    title: Utilities
+  - background: center / cover no-repeat url("/local/money.jpg") fixed
+    badges: []
+    cards:
+      - entities:
+          - entity: sensor.starling_effective_balance
+          - entity: sensor.starling_cleared_balance
+        title: Finance
+        type: glance
+      - aspect_ratio: 75%
+        title: GBP -> ZAR
+        type: iframe
+        url: >-
+          https://s.tradingview.com/dailyfx/widgetembed/?frameElementId=tradingview_344a1&symbol=FX_IDC%3AGBPZAR&interval=D&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f4f7f9&studies=%5B%5D&hideideas=1&theme=White&timezone=exchange&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=en&utm_source=www.dailyfx.com&utm_medium=widget&utm_campaign=chart&utm_term=FX_IDC%3AGBPZAR'
+    icon: 'mdi:cash-multiple'
+    path: finance
+    title: Finance
+  - background: center / cover no-repeat url("/local/control.jpg") fixed
+    badges: []
+    cards:
+      - cards:
+          - content: |
+              ## Home Assistant
+            type: markdown
+          - entities:
+              - sensor.processor_use
+              - sensor.memory_use_percent
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - entities:
+              - sensor.uptime
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - columns: 2
+            entities:
+              - entity: sensor.last_boot
+              - entity: sensor.uptime
+            type: glance
+          - bar_style:
+              padding-left: 2px
+              text-align: left
+            entity: sensor.disk_use_percent_home
+            height: 40px
+            max: 100
+            min: 0
+            severity:
+              - hue: '120'
+                value: 50
+              - hue: '60'
+                value: 75
+              - hue: '360'
+                value: 90
+            title: Disk
+            title_position: inside
+            type: 'custom:bar-card'
+          - type: 'custom:tracker-card'
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - content: |
+              ## Synology
+            type: markdown
+          - entities:
+              - sensor.cpu_load_total
+              - sensor.memory_usage_real
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - entities:
+              - sensor.network_up
+              - sensor.network_down
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - cards:
+              - bar_style:
+                  padding-left: 2px
+                  text-align: left
+                entity: sensor.volume_used_volume_3
+                height: 40px
+                max: 100
+                min: 0
+                severity:
+                  - hue: '120'
+                    value: 50
+                  - hue: '60'
+                    value: 75
+                  - hue: '360'
+                    value: 90
+                title: Primary
+                title_position: inside
+                type: 'custom:bar-card'
+              - bar_style:
+                  padding-left: 2px
+                  text-align: left
+                entity: sensor.volume_used_volume_2
+                height: 40px
+                max: 100
+                min: 0
+                severity:
+                  - hue: '120'
+                    value: 50
+                  - hue: '60'
+                    value: 75
+                  - hue: '360'
+                    value: 90
+                title: Backup
+                title_position: inside
+                type: 'custom:bar-card'
+            type: vertical-stack
+          - columns: 2
+            entities:
+              - entity: sensor.status_volume_3
+                name: Primary Status
+              - entity: sensor.status_volume_2
+                name: Backup Status
+            type: glance
+        type: 'custom:vertical-stack-in-card'
+      - cards:
+          - content: |
+              ## Network
+            type: markdown
+          - entities:
+              - sensor.gateway_www_down
+              - sensor.speedtest_download
+              - sensor.gateway_www_up
+              - sensor.speedtest_upload
+            icon: 'mdi:speedometer'
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - columns: 4
+            entities:
+              - entity: sensor.attic_motion_sensor_temperature_measurement
+                name: Rack Temp
+              - entity: sensor.unifi_gateway_www
+                name: Internet
+              - entity: sensor.unifi_gateway_wlan
+                name: LAN
+              - entity: sensor.unifi_gateway_firmware_upgradable
+                name: Firmware
+              - entity: sensor.unifi_gateway_alerts
+                name: Alerts
+              - entity: sensor.ap_disconnected
+                icon: 'mdi:access-point'
+                name: AP Down
+              - entity: sensor.wifi_clients
+                icon: 'mdi:account-circle'
+                name: WiFi Clients
+              - entity: sensor.wifi_guests
+                icon: 'mdi:account-circle-outline'
+                name: Guests
+            type: glance
+        type: 'custom:vertical-stack-in-card'
+      - card:
+          title: Systems Down
+          type: glance
+        filter:
+          include:
+            - entity_id: binary_sensor.anderville
+              state: 'off'
+            - entity_id: binary_sensor.go_go_gate
+              state: 'off'
+            - entity_id: binary_sensor.home_ass
+              state: 'off'
+            - entity_id: binary_sensor.opensprinkler
+              state: 'off'
+            - entity_id: binary_sensor.plex
+              state: 'off'
+            - entity_id: binary_sensor.pypies_ha
+              state: 'off'
+            - entity_id: binary_sensor.pypies_plein
+              state: 'off'
+            - entity_id: binary_sensor.rpi31
+              state: 'off'
+            - entity_id: binary_sensor.traccar
+              state: 'off'
+            - entity_id: binary_sensor.zm1
+              state: 'off'
+            - entity_id: binary_sensor.jt_traccar
+              state: 'off'
+        show_empty: true
+        type: 'custom:monster-card'
+      - card:
+          show_header_toggle: false
+          title: Low Battery Devices
+          type: entities
+        filter:
+          exclude:
+            - entity_id: sensor.plants_battery_number
+            - entity_id: sensor.finn_s_owlet_heart_rate
+            - entity_id: sensor.finn_s_owlet_oxygen_level
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_alarm_level
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_alarm_type
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_burglar
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_sourcenodeid
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_alarm_level_2
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_alarm_type_2
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_burglar_2
+            - entity_id: sensor.neo_coolcam_battery_powered_pir_sensor_v2_sourcenodeid_2
+          include:
+            - entity_id: '*battery*'
+              state: < 5
+            - attributes:
+                battery: < 5
+            - attributes:
+                battery_level: < 5
+        show_empty: true
+        type: 'custom:monster-card'
+      - entities:
+          - sensor.mobimeds
+          - sensor.mobimeds3
+          - binary_sensor.door_window_sensor_158d00019da6da
+          - binary_sensor.semi_mobimeds1
+        type: history-graph
+      - cards:
+          - content: |
+              ## Hassio Stats
+            type: markdown
+          - cards:
+              - entity:
+                  - sensor.count_automations
+                title: Automations
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_binary_sensors
+                title: Binary Sensors
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_cameras
+                title: Cameras
+                type: 'custom:bignumber-card'
+            type: horizontal-stack
+          - cards:
+              - entity:
+                  - sensor.count_device_trackers
+                title: Device Trackers
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_lights
+                title: Lights
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_media_players
+                title: Media Players
+                type: 'custom:bignumber-card'
+            type: horizontal-stack
+          - cards:
+              - entity:
+                  - sensor.count_plants
+                title: Plants
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_sensors
+                title: Sensors
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_switches
+                title: Switches
+                type: 'custom:bignumber-card'
+            type: horizontal-stack
+          - cards:
+              - entity:
+                  - sensor.count_zones
+                title: Zones
+                type: 'custom:bignumber-card'
+              - entity:
+                  - sensor.count_scripts
+                title: Scripts
+                type: 'custom:bignumber-card'
+            type: horizontal-stack
+        type: 'custom:vertical-stack-in-card'
+      - columns:
+          - field: title
+            title: Home Assistant News
+        entity: sensor.home_assistant_news
+        type: 'custom:list-card'
+      - entities:
+          - entity: automation.alarm_vacation_mode_off
+          - entity: automation.alarm_vacation_mode_on
+          - entity: automation.annouce_parcel_on_kitchen_motion
+          - entity: automation.auto_water_mj
+          - entity: automation.cctv_on_alarm_active
+          - entity: automation.cctv_on_alarm_off
+          - entity: automation.close_garage
+          - entity: automation.daily_vacuum
+          - entity: automation.day_to_night_theme
+          - entity: automation.doorbell
+          - entity: automation.feed_aglaonema
+          - entity: automation.finn_meds_at_10
+          - entity: automation.finn_meds_at_12
+          - entity: automation.finn_meds_at_12x2
+          - entity: automation.finn_meds_at_12x2_2
+          - entity: automation.finn_meds_at_4
+          - entity: automation.finn_meds_at_6
+          - entity: automation.finn_meds_at_6x2
+          - entity: automation.finn_meds_at_6x2_2
+          - entity: automation.finn_meds_counter
+          - entity: automation.finn_meds_counterx2
+          - entity: automation.finn_meds_warning_12
+          - entity: automation.finn_meds_warning_12x2
+          - entity: automation.finn_meds_warning_16
+          - entity: automation.finn_meds_warning_16x2
+          - entity: automation.finn_meds_warning_22
+          - entity: automation.finn_meds_warning_22x2
+          - entity: automation.finn_meds_warning_6
+          - entity: automation.finn_meds_warning_6x2
+          - entity: automation.finn_thermostat_off_daily
+          - entity: automation.finn_thermostat_on_daily
+          - entity: automation.finn_watch_battery_alert
+          - entity: automation.garage_door_closed
+          - entity: automation.garage_door_opened
+          - entity: automation.good_morning_weather_alert
+          - entity: automation.goodnight
+          - entity: automation.grow_light_off
+          - entity: automation.grow_light_on
+          - entity: >-
+              automation.keypad_clear_code_after_one_time_use_code_is_used_for_16_through_18
+          - entity: >-
+              automation.keypad_clear_code_after_one_time_use_is_set_to_disabled_for_16_through_18
+          - entity: automation.keypad_set_random_code_for_one_time_use
+          - entity: automation.keypad_switch_turned_off
+          - entity: automation.keypad_switch_turned_on
+          - entity: automation.keypad_temporary_code_end
+          - entity: automation.keypad_temporary_code_start_front
+          - entity: automation.master_thermostat_off
+          - entity: automation.master_thermostat_on
+          - entity: automation.meds_given
+          - entity: automation.mobimeds_2_battery_alert
+          - entity: automation.mobimeds_3_battery_alert
+          - entity: automation.mobimeds_battery_alert
+          - entity: automation.morning_weather_alert_kitchen
+          - entity: automation.night_to_day_theme
+          - entity: automation.open_garage
+          - entity: automation.open_garage_when_jj_gets_home_from_work
+          - entity: automation.pypies_access_denied
+          - entity: automation.pypies_unlocked
+          - entity: automation.reset_finn_meds_checker_12
+          - entity: automation.reset_finn_meds_checker_12x2
+          - entity: automation.reset_finn_meds_checker_16
+          - entity: automation.reset_finn_meds_checker_16x2
+          - entity: automation.reset_finn_meds_checker_22
+          - entity: automation.reset_finn_meds_checker_22x2
+          - entity: automation.reset_finn_meds_checker_6
+          - entity: automation.reset_finn_meds_checker_6x2
+          - entity: automation.reset_finn_meds_counter
+          - entity: automation.reset_parcel_counter
+          - entity: automation.reset_weather_alert
+          - entity: automation.rubbish_collection
+          - entity: automation.send_notification_when_alarm_triggered
+          - entity: automation.set_finn_thermostat_to_away_mode
+          - entity: automation.set_finn_thermostat_to_home_mode
+          - entity: automation.set_nest_thermostat_to_away_mode
+          - entity: automation.set_nest_thermostat_to_home_mode
+          - entity: automation.set_parcel_door_lock_options
+          - entity: automation.stop_garage
+          - entity: automation.store_golf_locations_googledrive
+          - entity: automation.theater_lights
+          - entity: automation.trigger_alarm_while_armed_away
+          - entity: automation.trigger_alarm_while_armed_home
+          - entity: automation.trigger_parcels
+          - entity: automation.turn_off_cctv
+          - entity: >-
+              automation.turn_off_dining_room_lights_10_minutes_after_last_movement
+          - entity: >-
+              automation.turn_off_entrance_hall_gateway_lights_10_minutes_after_last_movement
+          - entity: >-
+              automation.turn_off_entrance_hall_lights_10_minutes_after_last_movement
+          - entity: automation.turn_off_front_flood_lights_at_23_45
+          - entity: automation.turn_off_front_light_10_minutes_after_last_movement
+          - entity: automation.turn_off_garage_lights_10_minutes_after_last_movement
+          - entity: >-
+              automation.turn_off_guest_room_lights_10_minutes_after_last_movement
+          - entity: automation.turn_off_kitchen_lights_10_minutes_after_last_movement
+          - entity: automation.turn_off_lava_lamp_at_20_00
+          - entity: automation.turn_off_master_lights_5_minutes_after_last_movement
+          - entity: automation.turn_off_parcel_alert_when_passage_door_closes
+          - entity: automation.turn_off_parcel_lights_when_passage_door_closes
+          - entity: automation.turn_off_study_light_10_minutes_after_last_movement
+          - entity: automation.turn_off_study_light_if_main_goes_off
+          - entity: >-
+              automation.turn_off_upstairs_hallway_lights_10_minutes_after_last_movement
+          - entity: >-
+              automation.turn_off_upstairs_hallway_lights_10_minutes_after_last_movement_2
+          - entity: automation.turn_on_cctv
+          - entity: >-
+              automation.turn_on_dining_room_lights_when_there_is_movement_after_sunset
+          - entity: >-
+              automation.turn_on_entrance_hall_lights_when_there_is_movement_after_sunset
+          - entity: >-
+              automation.turn_on_entrance_hall_lights_when_there_is_movement_after_sunset_2
+          - entity: automation.turn_on_front_flood_lights_just_after_sunset
+          - entity: automation.turn_on_front_light_when_there_is_movement_after_sunset
+          - entity: automation.turn_on_garage_lights_when_there_is_movement
+          - entity: >-
+              automation.turn_on_guest_room_lights_when_there_is_movement_after_sunset
+          - entity: >-
+              automation.turn_on_kitchen_lights_when_there_is_movement_after_sunset
+          - entity: automation.turn_on_lava_lamp_at_sunset
+          - entity: >-
+              automation.turn_on_lounge_lights_when_there_is_movement_after_sunset
+          - entity: >-
+              automation.turn_on_master_lights_when_there_is_movement_after_sunset
+          - entity: automation.turn_on_parcel_lights_when_parcel_door_opens
+          - entity: automation.turn_on_study_desk_light_when_main_is_on
+          - entity: automation.turn_on_study_light_when_there_is_movement_after_sunset
+          - entity: >-
+              automation.turn_on_upstairs_hallway_lights_when_there_is_movement_after_sunset
+          - entity: automation.update_plant_problems
+          - entity: automation.vacation_mode_when_away_off
+          - entity: automation.vacation_mode_when_away_on
+          - entity: automation.utility_tariff
+        show_header_toggle: true
+        title: Automations
+        type: entities
+    icon: 'mdi:gauge-low'
+    id: Controller
+    title: Controller
+  - background: center / cover no-repeat url("/local/bricks.jpg") fixed
+    badges: []
+    cards:
+      - entities:
+          - entity: lock.assa_abloy_keyless_connected_yd_01_con_locked
+          - entity: zwave.assa_abloy_keyless_connected_yd_01_con
+        show_header_toggle: false
+        type: entities
+      - entity: alarm_control_panel.ha_alarm
+        states:
+          - arm_home
+          - arm_away
+        type: alarm-panel
+      - entities:
+          - entity: switch.conservatory_state
+          - entity: switch.dining_room_state
+          - entity: switch.entrance_hall_state
+          - entity: switch.finn_room_state
+          - entity: switch.finn_state
+          - entity: switch.front_garden_state
+          - entity: switch.front_side_entrance_state
+          - entity: switch.garage_state
+          - entity: switch.kitchen_state
+          - entity: switch.lounge_state
+          - entity: switch.side_garden_state
+          - entity: switch.parcel_door_state
+          - entity: switch.side_gate_state
+          - entity: switch.swings_state
+          - entity: switch.upstairs_hallway_state
+        title: CCTV
+        type: entities
+      - cards:
+          - content: |
+              ## Pypies Plein
+            type: markdown
+          - entity: camera.front_gate
+            name: 9 Pypies
+            show_name: true
+            show_state: false
+            type: picture-entity
+          - columns: 2
+            entities:
+              - sensor.ring_front_gate_last_activity
+              - sensor.ring_front_gate_battery
+              - binary_sensor.pypies_front_gate
+              - binary_sensor.pypies_garage_door
+            type: glance
+          - entities:
+              - binary_sensor.pypies_front_gate
+              - Binary_sensor.pypies_garage_door
+            type: history-graph
+        id: 7a0fe21111bd440b987adadasdasdadd340
+        type: 'custom:vertical-stack-in-card'
+      - entities:
+          - entity: sensor.breaches_anna_jj_anderson_gmail_com
+          - entity: sensor.breaches_jj_workstuff_gmail_com
+          - entity: sensor.breaches_jjand3rson_me_com
+          - entity: sensor.breaches_jjanderson_hotmail_com
+          - entity: sensor.breaches_9pypiesplein_gmail_com
+        show_header_toggle: false
+        title: Email Security
+        type: entities
+      - cards:
+          - cards:
+              - content: |
+                  ## Door Lock Info
+                  The first few cards show the door reports
+
+                  ## Code Management
+                  The next cards are for user code slot management
+                  Codes 1-10 are for Family Members
+                  Codes 11-15 are for Workers
+                  Codes 16-18 are one time use slots
+
+                  ##  The last few cards are for Z-Wave options
+                type: markdown
+              - entities:
+                  - lock.lock_front_door_lock
+                  - sensor.front_door_report
+                  - sensor.frontdoor_code
+                show_header_toggle: false
+                title: Front Door Info
+                type: entities
+              - entities:
+                  - lock.lock_back_door_lock
+                  - sensor.back_door_report
+                  - sensor.backdoor_code
+                show_header_toggle: false
+                title: Back Door Info
+                type: entities
+              - entities:
+                  - lock.lock_garage_door_lock
+                  - sensor.garage_door_report
+                  - sensor.garagedoor_code
+                title: Garage Door Info
+                type: entities
+              - entities:
+                  - input_text.door_keypad_1_name
+                  - input_text.door_keypad_1_code
+                  - input_select.door_keypad_1_access_schedule
+                  - input_datetime.door_keypad_1_date_start
+                  - input_datetime.door_keypad_1_date_end
+                  - input_boolean.door_keypad_1_front_switch
+                  - input_boolean.door_keypad_1_back_switch
+                  - input_boolean.door_keypad_1_garage_switch
+                  - script.door_keypad_1_delete
+                show_header_toggle: false
+                title: Entry Code 1
+                type: entities
+              - entities:
+                  - input_text.door_keypad_2_name
+                  - input_text.door_keypad_2_code
+                  - input_select.door_keypad_2_access_schedule
+                  - input_datetime.door_keypad_2_date_start
+                  - input_datetime.door_keypad_2_date_end
+                  - input_boolean.door_keypad_2_front_switch
+                  - input_boolean.door_keypad_2_back_switch
+                  - input_boolean.door_keypad_2_garage_switch
+                  - script.door_keypad_2_delete
+                show_header_toggle: false
+                title: Entry Code 2
+                type: entities
+              - entities:
+                  - input_text.door_keypad_3_name
+                  - input_text.door_keypad_3_code
+                  - input_select.door_keypad_3_access_schedule
+                  - input_datetime.door_keypad_3_date_start
+                  - input_datetime.door_keypad_3_date_end
+                  - input_boolean.door_keypad_3_front_switch
+                  - input_boolean.door_keypad_3_back_switch
+                  - input_boolean.door_keypad_3_garage_switch
+                  - script.door_keypad_3_delete
+                show_header_toggle: false
+                title: Entry Code 3
+                type: entities
+              - entities:
+                  - input_text.door_keypad_4_name
+                  - input_text.door_keypad_4_code
+                  - input_select.door_keypad_4_access_schedule
+                  - input_datetime.door_keypad_4_date_start
+                  - input_datetime.door_keypad_4_date_end
+                  - input_boolean.door_keypad_4_front_switch
+                  - input_boolean.door_keypad_4_back_switch
+                  - input_boolean.door_keypad_4_garage_switch
+                  - script.door_keypad_4_delete
+                show_header_toggle: false
+                title: Entry Code 4
+                type: entities
+              - entities:
+                  - input_text.door_keypad_5_name
+                  - input_text.door_keypad_5_code
+                  - input_select.door_keypad_5_access_schedule
+                  - input_datetime.door_keypad_5_date_start
+                  - input_datetime.door_keypad_5_date_end
+                  - input_boolean.door_keypad_5_front_switch
+                  - input_boolean.door_keypad_5_back_switch
+                  - input_boolean.door_keypad_5_garage_switch
+                  - script.door_keypad_5_delete
+                show_header_toggle: false
+                title: Entry Code 5
+                type: entities
+              - entities:
+                  - input_text.door_keypad_6_name
+                  - input_text.door_keypad_6_code
+                  - input_select.door_keypad_6_access_schedule
+                  - input_datetime.door_keypad_6_date_start
+                  - input_datetime.door_keypad_6_date_end
+                  - input_boolean.door_keypad_6_front_switch
+                  - input_boolean.door_keypad_6_back_switch
+                  - input_boolean.door_keypad_6_garage_switch
+                  - script.door_keypad_6_delete
+                show_header_toggle: false
+                title: Entry Code 6
+                type: entities
+              - entities:
+                  - input_text.door_keypad_7_name
+                  - input_text.door_keypad_7_code
+                  - input_select.door_keypad_7_access_schedule
+                  - input_datetime.door_keypad_7_date_start
+                  - input_datetime.door_keypad_7_date_end
+                  - input_boolean.door_keypad_7_front_switch
+                  - input_boolean.door_keypad_7_back_switch
+                  - input_boolean.door_keypad_7_garage_switch
+                  - script.door_keypad_7_delete
+                show_header_toggle: false
+                title: Entry Code 7
+                type: entities
+              - entities:
+                  - input_text.door_keypad_8_name
+                  - input_text.door_keypad_8_code
+                  - input_select.door_keypad_8_access_schedule
+                  - input_datetime.door_keypad_8_date_start
+                  - input_datetime.door_keypad_8_date_end
+                  - input_boolean.door_keypad_8_front_switch
+                  - input_boolean.door_keypad_8_back_switch
+                  - input_boolean.door_keypad_8_garage_switch
+                  - script.door_keypad_8_delete
+                show_header_toggle: false
+                title: Entry Code 8
+                type: entities
+              - entities:
+                  - input_text.door_keypad_9_name
+                  - input_text.door_keypad_9_code
+                  - input_select.door_keypad_9_access_schedule
+                  - input_datetime.door_keypad_9_date_start
+                  - input_datetime.door_keypad_9_date_end
+                  - input_boolean.door_keypad_9_front_switch
+                  - input_boolean.door_keypad_9_back_switch
+                  - input_boolean.door_keypad_9_garage_switch
+                  - script.door_keypad_9_delete
+                show_header_toggle: false
+                title: Entry Code 9
+                type: entities
+              - entities:
+                  - input_text.door_keypad_10_name
+                  - input_text.door_keypad_10_code
+                  - input_select.door_keypad_10_access_schedule
+                  - input_datetime.door_keypad_10_date_start
+                  - input_datetime.door_keypad_10_date_end
+                  - input_boolean.door_keypad_10_front_switch
+                  - input_boolean.door_keypad_10_back_switch
+                  - input_boolean.door_keypad_10_garage_switch
+                  - script.door_keypad_10_delete
+                show_header_toggle: false
+                title: Entry Code 10
+                type: entities
+              - entities:
+                  - input_text.door_keypad_11_name
+                  - input_text.door_keypad_11_code
+                  - input_select.door_keypad_11_access_schedule
+                  - input_datetime.door_keypad_11_date_start
+                  - input_datetime.door_keypad_11_date_end
+                  - input_boolean.door_keypad_11_front_switch
+                  - input_boolean.door_keypad_11_back_switch
+                  - input_boolean.door_keypad_11_garage_switch
+                  - script.door_keypad_11_delete
+                show_header_toggle: false
+                title: Entry Code 11
+                type: entities
+              - entities:
+                  - input_text.door_keypad_12_name
+                  - input_text.door_keypad_12_code
+                  - input_select.door_keypad_12_access_schedule
+                  - input_datetime.door_keypad_12_date_start
+                  - input_datetime.door_keypad_12_date_end
+                  - input_boolean.door_keypad_12_front_switch
+                  - input_boolean.door_keypad_12_back_switch
+                  - input_boolean.door_keypad_12_garage_switch
+                  - script.door_keypad_12_delete
+                show_header_toggle: false
+                title: Entry Code 12
+                type: entities
+              - entities:
+                  - input_text.door_keypad_13_name
+                  - input_text.door_keypad_13_code
+                  - input_select.door_keypad_13_access_schedule
+                  - input_datetime.door_keypad_13_date_start
+                  - input_datetime.door_keypad_13_date_end
+                  - input_boolean.door_keypad_13_front_switch
+                  - input_boolean.door_keypad_13_back_switch
+                  - input_boolean.door_keypad_13_garage_switch
+                  - script.door_keypad_13_delete
+                show_header_toggle: false
+                title: Entry Code 13
+                type: entities
+              - entities:
+                  - input_text.door_keypad_14_name
+                  - input_text.door_keypad_14_code
+                  - input_select.door_keypad_14_access_schedule
+                  - input_datetime.door_keypad_14_date_start
+                  - input_datetime.door_keypad_14_date_end
+                  - input_boolean.door_keypad_14_front_switch
+                  - input_boolean.door_keypad_14_back_switch
+                  - input_boolean.door_keypad_14_garage_switch
+                  - script.door_keypad_14_delete
+                show_header_toggle: false
+                title: Entry Code 14
+                type: entities
+              - entities:
+                  - input_text.door_keypad_15_name
+                  - input_text.door_keypad_15_code
+                  - input_select.door_keypad_15_access_schedule
+                  - input_datetime.door_keypad_15_date_start
+                  - input_datetime.door_keypad_15_date_end
+                  - input_boolean.door_keypad_15_front_switch
+                  - input_boolean.door_keypad_15_back_switch
+                  - input_boolean.door_keypad_15_garage_switch
+                  - script.door_keypad_15_delete
+                show_header_toggle: false
+                title: Entry Code 15
+                type: entities
+              - entities:
+                  - input_select.door_keypad_16_access_schedule
+                  - input_text.door_keypad_16_name
+                  - input_text.door_keypad_16_code
+                  - input_boolean.door_keypad_16_front_switch
+                  - input_boolean.door_keypad_16_back_switch
+                  - input_boolean.door_keypad_16_garage_switch
+                  - script.door_keypad_16_delete
+                show_header_toggle: false
+                title: One Time Use Code 1
+                type: entities
+              - entities:
+                  - input_select.door_keypad_17_access_schedule
+                  - input_text.door_keypad_17_name
+                  - input_text.door_keypad_17_code
+                  - input_boolean.door_keypad_17_front_switch
+                  - input_boolean.door_keypad_17_back_switch
+                  - input_boolean.door_keypad_17_garage_switch
+                  - script.door_keypad_17_delete
+                show_header_toggle: false
+                title: One Time Use Code 2
+                type: entities
+              - entities:
+                  - input_select.door_keypad_18_access_schedule
+                  - input_text.door_keypad_18_name
+                  - input_text.door_keypad_18_code
+                  - input_boolean.door_keypad_18_front_switch
+                  - input_boolean.door_keypad_18_back_switch
+                  - input_boolean.door_keypad_18_garage_switch
+                  - script.door_keypad_18_delete
+                show_header_toggle: false
+                title: One Time Use Code 3
+                type: entities
+              - entities:
+                  - input_select.lock_zwave_option_3_front
+                  - input_select.lock_zwave_option_4_front
+                  - input_select.lock_zwave_option_5_front
+                  - input_select.lock_zwave_option_7_front
+                  - input_select.lock_zwave_option_8_front
+                  - input_select.lock_zwave_option_9_front
+                  - input_select.lock_zwave_option_10_front
+                  - input_select.lock_zwave_option_11_front
+                  - input_select.lock_zwave_option_15_front
+                  - input_select.lock_zwave_option_16_front
+                show_header_toggle: false
+                title: Front Door Configuration Options
+                type: entities
+              - entities:
+                  - input_select.lock_zwave_option_3_back
+                  - input_select.lock_zwave_option_4_back
+                  - input_select.lock_zwave_option_5_back
+                  - input_select.lock_zwave_option_7_back
+                  - input_select.lock_zwave_option_8_back
+                  - input_select.lock_zwave_option_9_back
+                  - input_select.lock_zwave_option_10_back
+                  - input_select.lock_zwave_option_11_back
+                  - input_select.lock_zwave_option_15_back
+                  - input_select.lock_zwave_option_16_back
+                parameters:
+                  scrollbar:
+                    draggable: true
+                    hide: false
+                    snapOnRelease: true
+                  spaceBetween: 8
+                show_header_toggle: false
+                title: Back Door Configuration Options
+                type: entities
+            type: 'custom:swipe-card'
+        type: horizontal-stack
+    icon: 'mdi:shield-lock'
+    path: security
+    title: Security
